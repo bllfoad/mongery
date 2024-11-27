@@ -88,6 +88,26 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       title: 'Müşteri',
       dataIndex: 'customer',
       key: 'customer',
+      render: (value) => (
+        <div
+          style={{
+            backgroundColor: 'rgba(250, 219, 20, 0.2)',
+            color: '#d4b106',
+            border: '1px solid #d4b106',
+            borderRadius: '4px',
+            padding: '2px 4px',
+            fontSize: '10px',
+            display: 'inline-block',
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            maxWidth: '200px'
+          }}
+        >
+          {value}
+        </div>
+      ),
     },
     {
       title: 'Fatura Numarası',
@@ -98,31 +118,119 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       title: 'Toplam Miktar',
       dataIndex: 'total_quantity',
       key: 'total_quantity',
-      render: (value) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value),
+      render: (value) => `${new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)} ton`,
     },
     {
       title: `Toplam Tutar (${currency})`,
       dataIndex: 'revenue',
       key: 'revenue',
-      render: (value) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value),
+      render: (value) => {
+        const formattedValue = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+        return (
+          <div
+            style={{
+              backgroundColor: value >= 0 ? 'rgba(82, 196, 26, 0.1)' : 'rgba(245, 34, 45, 0.1)',
+              color: value >= 0 ? '#52c41a' : '#f5222d',
+              border: `1px solid ${value >= 0 ? '#52c41a' : '#f5222d'}`,
+              borderRadius: '4px',
+              padding: '2px 4px',
+              fontSize: '10px',
+              display: 'inline-block',
+              textAlign: 'center',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '200px'
+            }}
+          >
+            {`${currency} ${formattedValue}`}
+          </div>
+        );
+      },
     },
     {
       title: `Toplam Maliyet (${currency})`,
       dataIndex: 'cost',
       key: 'cost',
-      render: (value) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value),
+      render: (value) => {
+        const formattedValue = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+        return (
+          <div
+            style={{
+              backgroundColor: value >= 0 ? 'rgba(82, 196, 26, 0.1)' : 'rgba(245, 34, 45, 0.1)',
+              color: value >= 0 ? '#52c41a' : '#f5222d',
+              border: `1px solid ${value >= 0 ? '#52c41a' : '#f5222d'}`,
+              borderRadius: '4px',
+              padding: '2px 4px',
+              fontSize: '10px',
+              display: 'inline-block',
+              textAlign: 'center',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '200px'
+            }}
+          >
+            {`${currency} ${formattedValue}`}
+          </div>
+        );
+      },
     },
     {
       title: `Toplam Karlılık (${currency})`,
       dataIndex: 'profit',
       key: 'profit',
-      render: (value) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value),
+      render: (value) => {
+        const formattedValue = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+        return (
+          <div
+            style={{
+              backgroundColor: value >= 0 ? 'rgba(82, 196, 26, 0.1)' : 'rgba(245, 34, 45, 0.1)',
+              color: value >= 0 ? '#52c41a' : '#f5222d',
+              border: `1px solid ${value >= 0 ? '#52c41a' : '#f5222d'}`,
+              borderRadius: '4px',
+              padding: '2px 4px',
+              fontSize: '10px',
+              display: 'inline-block',
+              textAlign: 'center',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '200px'
+            }}
+          >
+            {`${currency} ${formattedValue}`}
+          </div>
+        );
+      },
     },
     {
       title: `Net Kar (Cüneyt bey) (${currency})`,
       dataIndex: 'net_profit',
       key: 'net_profit',
-      render: (value) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value),
+      render: (value) => {
+        const formattedValue = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+        return (
+          <div
+            style={{
+              backgroundColor: value >= 0 ? 'rgba(82, 196, 26, 0.1)' : 'rgba(245, 34, 45, 0.1)',
+              color: value >= 0 ? '#52c41a' : '#f5222d',
+              border: `1px solid ${value >= 0 ? '#52c41a' : '#f5222d'}`,
+              borderRadius: '4px',
+              padding: '2px 4px',
+              fontSize: '10px',
+              display: 'inline-block',
+              textAlign: 'center',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '200px'
+            }}
+          >
+            {`${currency} ${formattedValue}`}
+          </div>
+        );
+      },
     },
   ];
 
@@ -131,6 +239,26 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       title: 'Ürün',
       dataIndex: 'product_name',
       key: 'product_name',
+      render: (value) => (
+        <div
+          style={{
+            backgroundColor: 'rgba(114, 46, 209, 0.2)',
+            color: '#722ed1',
+            border: '1px solid #722ed1',
+            borderRadius: '4px',
+            padding: '2px 4px',
+            fontSize: '10px',
+            display: 'inline-block',
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            maxWidth: '200px'
+          }}
+        >
+          {value}
+        </div>
+      ),
     },
     {
       title: 'Fatura Numarası',
@@ -141,31 +269,119 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       title: 'Toplam Miktar',
       dataIndex: 'quantity',
       key: 'quantity',
-      render: (value) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value),
+      render: (value) => `${new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)} ton`,
     },
     {
       title: `Toplam Tutar (${currency})`,
       dataIndex: 'revenue',
       key: 'revenue',
-      render: (value) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value),
+      render: (value) => {
+        const formattedValue = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+        return (
+          <div
+            style={{
+              backgroundColor: value >= 0 ? 'rgba(82, 196, 26, 0.1)' : 'rgba(245, 34, 45, 0.1)',
+              color: value >= 0 ? '#52c41a' : '#f5222d',
+              border: `1px solid ${value >= 0 ? '#52c41a' : '#f5222d'}`,
+              borderRadius: '4px',
+              padding: '2px 4px',
+              fontSize: '10px',
+              display: 'inline-block',
+              textAlign: 'center',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '200px'
+            }}
+          >
+            {`${currency} ${formattedValue}`}
+          </div>
+        );
+      },
     },
     {
       title: `Toplam Maliyet (${currency})`,
       dataIndex: 'cost',
       key: 'cost',
-      render: (value) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value),
+      render: (value) => {
+        const formattedValue = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+        return (
+          <div
+            style={{
+              backgroundColor: value >= 0 ? 'rgba(82, 196, 26, 0.1)' : 'rgba(245, 34, 45, 0.1)',
+              color: value >= 0 ? '#52c41a' : '#f5222d',
+              border: `1px solid ${value >= 0 ? '#52c41a' : '#f5222d'}`,
+              borderRadius: '4px',
+              padding: '2px 4px',
+              fontSize: '10px',
+              display: 'inline-block',
+              textAlign: 'center',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '200px'
+            }}
+          >
+            {`${currency} ${formattedValue}`}
+          </div>
+        );
+      },
     },
     {
       title: `Toplam Karlılık (${currency})`,
       dataIndex: 'profit',
       key: 'profit',
-      render: (value) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value),
+      render: (value) => {
+        const formattedValue = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+        return (
+          <div
+            style={{
+              backgroundColor: value >= 0 ? 'rgba(82, 196, 26, 0.1)' : 'rgba(245, 34, 45, 0.1)',
+              color: value >= 0 ? '#52c41a' : '#f5222d',
+              border: `1px solid ${value >= 0 ? '#52c41a' : '#f5222d'}`,
+              borderRadius: '4px',
+              padding: '2px 4px',
+              fontSize: '10px',
+              display: 'inline-block',
+              textAlign: 'center',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '200px'
+            }}
+          >
+            {`${currency} ${formattedValue}`}
+          </div>
+        );
+      },
     },
     {
       title: `Net Kar (Cüneyt bey) (${currency})`,
       dataIndex: 'net_profit',
       key: 'net_profit',
-      render: (value) => new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value),
+      render: (value) => {
+        const formattedValue = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+        return (
+          <div
+            style={{
+              backgroundColor: value >= 0 ? 'rgba(82, 196, 26, 0.1)' : 'rgba(245, 34, 45, 0.1)',
+              color: value >= 0 ? '#52c41a' : '#f5222d',
+              border: `1px solid ${value >= 0 ? '#52c41a' : '#f5222d'}`,
+              borderRadius: '4px',
+              padding: '2px 4px',
+              fontSize: '10px',
+              display: 'inline-block',
+              textAlign: 'center',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '200px'
+            }}
+          >
+            {`${currency} ${formattedValue}`}
+          </div>
+        );
+      },
     },
   ];
 
