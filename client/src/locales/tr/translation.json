@@ -36,5 +36,10 @@
   },
   "modal": {
     "title": "Ürün Özellikleri"
+  },
+  "theme": {
+    "toggle": "Tema değiştir",
+    "switchToLight": "Açık temaya geç",
+    "switchToDark": "Koyu temaya geç"
   }
 }
