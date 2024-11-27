@@ -26,28 +26,34 @@ describe('ProfitabilityTable', () => {
     expect(table).toBeInTheDocument();
 
     const headers = getAntTableHeaders();
-    expect(headers).toHaveLength(6);
-    expect(headers[0]).toHaveTextContent('Order Number');
-    expect(headers[1]).toHaveTextContent('Date');
-    expect(headers[2]).toHaveTextContent('Customer');
-    expect(headers[3]).toHaveTextContent('Revenue (USD)');
-    expect(headers[4]).toHaveTextContent('Cost (USD)');
-    expect(headers[5]).toHaveTextContent('Profit (USD)');
+    expect(headers).toHaveLength(8);
+    expect(headers[0]).toHaveTextContent('Customer');
+    expect(headers[1]).toHaveTextContent('Order Number');
+    expect(headers[2]).toHaveTextContent('Date');
+    expect(headers[3]).toHaveTextContent('Total Quantity');
+    expect(headers[4]).toHaveTextContent('Revenue (USD)');
+    expect(headers[5]).toHaveTextContent('Cost (USD)');
+    expect(headers[6]).toHaveTextContent('Profit (USD)');
+    expect(headers[7]).toHaveTextContent('Net Profit (USD)');
 
     const cells = document.querySelectorAll('.ant-table-cell');
-    const orderNumber = cells[6].textContent;
-    const date = cells[7].textContent;
     const customer = cells[8].textContent;
-    const revenue = cells[9].textContent;
-    const cost = cells[10].textContent;
-    const profit = cells[11].textContent;
+    const orderNumber = cells[9].textContent;
+    const date = cells[10].textContent;
+    const totalQuantity = cells[11].textContent;
+    const revenue = cells[12].textContent;
+    const cost = cells[13].textContent;
+    const profit = cells[14].textContent;
+    const netProfit = cells[15].textContent;
 
+    expect(customer).toBe('Test Customer');
     expect(orderNumber).toBe('ORDER-001');
     expect(date).toBe('1/1/2024');
-    expect(customer).toBe('Test Customer');
-    expect(revenue).toBe('1,000.00');
-    expect(cost).toBe('800.00');
-    expect(profit).toBe('200.00');
+    expect(totalQuantity).toBe('10');
+    expect(revenue).toBe('USD 1.000,00');
+    expect(cost).toBe('USD 800,00');
+    expect(profit).toBe('USD 200,00');
+    expect(netProfit).toBe('USD 180,00');
   });
 
   it('renders product view correctly', async () => {
@@ -64,25 +70,31 @@ describe('ProfitabilityTable', () => {
     expect(table).toBeInTheDocument();
 
     const headers = getAntTableHeaders();
-    expect(headers).toHaveLength(5);
+    expect(headers).toHaveLength(7);
     expect(headers[0]).toHaveTextContent('Product Name');
-    expect(headers[1]).toHaveTextContent('Quantity');
-    expect(headers[2]).toHaveTextContent('Revenue (USD)');
-    expect(headers[3]).toHaveTextContent('Cost (USD)');
-    expect(headers[4]).toHaveTextContent('Profit (USD)');
+    expect(headers[1]).toHaveTextContent('Invoice Number');
+    expect(headers[2]).toHaveTextContent('Quantity');
+    expect(headers[3]).toHaveTextContent('Revenue (USD)');
+    expect(headers[4]).toHaveTextContent('Cost (USD)');
+    expect(headers[5]).toHaveTextContent('Profit (USD)');
+    expect(headers[6]).toHaveTextContent('Net Profit (USD)');
 
     const cells = document.querySelectorAll('.ant-table-cell');
-    const productName = cells[5].textContent;
-    const quantity = cells[6].textContent;
-    const revenue = cells[7].textContent;
-    const cost = cells[8].textContent;
-    const profit = cells[9].textContent;
+    const productName = cells[7].textContent;
+    const invoiceNumber = cells[8].textContent;
+    const quantity = cells[9].textContent;
+    const revenue = cells[10].textContent;
+    const cost = cells[11].textContent;
+    const profit = cells[12].textContent;
+    const netProfit = cells[13].textContent;
 
     expect(productName).toBe('Test Product');
+    expect(invoiceNumber).toBe('INV-001');
     expect(quantity).toBe('10 pcs');
-    expect(revenue).toBe('1,000.00');
-    expect(cost).toBe('800.00');
-    expect(profit).toBe('200.00');
+    expect(revenue).toBe('USD 1.000,00');
+    expect(cost).toBe('USD 800,00');
+    expect(profit).toBe('USD 200,00');
+    expect(netProfit).toBe('USD 180,00');
   });
 
   it('displays loading state', async () => {
@@ -112,9 +124,10 @@ describe('ProfitabilityTable', () => {
     );
 
     const headers = getAntTableHeaders();
-    expect(headers[3]).toHaveTextContent('Revenue (TL)');
-    expect(headers[4]).toHaveTextContent('Cost (TL)');
-    expect(headers[5]).toHaveTextContent('Profit (TL)');
+    expect(headers[4]).toHaveTextContent('Revenue (TL)');
+    expect(headers[5]).toHaveTextContent('Cost (TL)');
+    expect(headers[6]).toHaveTextContent('Profit (TL)');
+    expect(headers[7]).toHaveTextContent('Net Profit (TL)');
   });
 
   it('handles empty data correctly', async () => {

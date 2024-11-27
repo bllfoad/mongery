@@ -35,6 +35,7 @@ interface ProductData {
     'Çap Toleransları': string;
     'Mukavemet (Min-Max)': string;
   };
+  unit?: string;
 }
 
 type TableData = OrderData | ProductData;
@@ -125,7 +126,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       title: t('table.totalQuantity'),
       dataIndex: 'total_quantity',
       key: 'total_quantity',
-      render: (value) => `${new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)} ton`,
+      render: (value) => `${value}`,
     },
     {
       title: `${t('table.revenue')} (${currency})`,
@@ -276,7 +277,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       title: t('table.quantity'),
       dataIndex: 'quantity',
       key: 'quantity',
-      render: (value) => `${new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)} ton`,
+      render: (value, record: ProductData) => `${value} ${record.unit || 'pcs'}`,
     },
     {
       title: `${t('table.revenue')} (${currency})`,

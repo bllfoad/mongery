@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { profitabilityApi } from '../store/api';
 import type { RootState } from '../store/store';
 import { ConfigProvider } from 'antd';
+import './i18n-test-config';
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   preloadedState?: Partial<RootState>;
@@ -75,20 +76,24 @@ interface MockOrderData {
   order_number?: string;
   order_date?: string;
   customer?: string;
+  total_quantity?: number;
   revenue?: number;
   cost?: number;
   profit?: number;
+  net_profit?: number;
   currency?: string;
   key?: number;
 }
 
 interface MockProductData {
   product_name?: string;
+  invoice_number?: string;
   quantity?: number;
   unit?: string;
   revenue?: number;
   cost?: number;
   profit?: number;
+  net_profit?: number;
   currency?: string;
   order_id?: number;
   key?: number;
@@ -99,28 +104,33 @@ export function createMockOrder(overrides: MockOrderData = {}) {
   return {
     order_id: 1,
     order_number: 'ORDER-001',
-    order_date: '2024-01-01',
+    order_date: '1/1/2024',
     customer: 'Test Customer',
+    total_quantity: 10,
     revenue: 1000,
     cost: 800,
     profit: 200,
+    net_profit: 180,
     currency: 'USD',
+    key: 1,
     ...overrides,
-    key: overrides.order_id || 1
   };
 }
 
 export function createMockProduct(overrides: MockProductData = {}) {
   return {
     product_name: 'Test Product',
+    invoice_number: 'INV-001',
     quantity: 10,
     unit: 'pcs',
     revenue: 1000,
     cost: 800,
     profit: 200,
+    net_profit: 180,
     currency: 'USD',
+    order_id: 1,
+    key: 1,
     ...overrides,
-    key: overrides.order_id || 1
   };
 }
 
