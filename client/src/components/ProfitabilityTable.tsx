@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Table, Modal, Input } from 'antd';
+import { useTranslation } from 'react-i18next';
 import type { ColumnsType } from 'antd/es/table';
 
 interface OrderData {
@@ -51,6 +52,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
   type,
   currency,
 }) => {
+  const { t } = useTranslation();
   const [selectedRow, setSelectedRow] = useState<ProductData | null>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [searchText, setSearchText] = useState('');
@@ -85,7 +87,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
 
   const orderColumns: ColumnsType<OrderData> = [
     {
-      title: 'Müşteri',
+      title: t('table.customer'),
       dataIndex: 'customer',
       key: 'customer',
       render: (value) => (
@@ -110,18 +112,23 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       ),
     },
     {
-      title: 'Fatura Numarası',
+      title: t('table.orderNumber'),
       dataIndex: 'order_number',
       key: 'order_number',
     },
     {
-      title: 'Toplam Miktar',
+      title: t('table.orderDate'),
+      dataIndex: 'order_date',
+      key: 'order_date',
+    },
+    {
+      title: t('table.totalQuantity'),
       dataIndex: 'total_quantity',
       key: 'total_quantity',
       render: (value) => `${new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)} ton`,
     },
     {
-      title: `Toplam Tutar (${currency})`,
+      title: `${t('table.revenue')} (${currency})`,
       dataIndex: 'revenue',
       key: 'revenue',
       render: (value) => {
@@ -149,7 +156,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       },
     },
     {
-      title: `Toplam Maliyet (${currency})`,
+      title: `${t('table.cost')} (${currency})`,
       dataIndex: 'cost',
       key: 'cost',
       render: (value) => {
@@ -177,7 +184,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       },
     },
     {
-      title: `Toplam Karlılık (${currency})`,
+      title: `${t('table.profit')} (${currency})`,
       dataIndex: 'profit',
       key: 'profit',
       render: (value) => {
@@ -205,7 +212,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       },
     },
     {
-      title: `Net Kar (Cüneyt bey) (${currency})`,
+      title: `${t('table.netProfit')} (${currency})`,
       dataIndex: 'net_profit',
       key: 'net_profit',
       render: (value) => {
@@ -236,7 +243,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
 
   const productColumns: ColumnsType<ProductData> = [
     {
-      title: 'Ürün',
+      title: t('table.productName'),
       dataIndex: 'product_name',
       key: 'product_name',
       render: (value) => (
@@ -261,18 +268,18 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       ),
     },
     {
-      title: 'Fatura Numarası',
+      title: t('table.invoiceNumber'),
       dataIndex: 'invoice_number',
       key: 'invoice_number',
     },
     {
-      title: 'Toplam Miktar',
+      title: t('table.quantity'),
       dataIndex: 'quantity',
       key: 'quantity',
       render: (value) => `${new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)} ton`,
     },
     {
-      title: `Toplam Tutar (${currency})`,
+      title: `${t('table.revenue')} (${currency})`,
       dataIndex: 'revenue',
       key: 'revenue',
       render: (value) => {
@@ -300,7 +307,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       },
     },
     {
-      title: `Toplam Maliyet (${currency})`,
+      title: `${t('table.cost')} (${currency})`,
       dataIndex: 'cost',
       key: 'cost',
       render: (value) => {
@@ -328,7 +335,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       },
     },
     {
-      title: `Toplam Karlılık (${currency})`,
+      title: `${t('table.profit')} (${currency})`,
       dataIndex: 'profit',
       key: 'profit',
       render: (value) => {
@@ -356,7 +363,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
       },
     },
     {
-      title: `Net Kar (Cüneyt bey) (${currency})`,
+      title: `${t('table.netProfit')} (${currency})`,
       dataIndex: 'net_profit',
       key: 'net_profit',
       render: (value) => {
@@ -388,7 +395,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
   return (
     <>
       <Input
-        placeholder="Ara..."
+        placeholder={t('search.placeholder')}
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
         style={{ width: '100%', marginBottom: 16 }}
@@ -413,7 +420,7 @@ const ProfitabilityTable: React.FC<ProfitabilityTableProps> = ({
         />
       )}
       <Modal
-        title="Ürün Özellikleri"
+        title={t('modal.title')}
         open={isModalVisible}
         onCancel={handleModalClose}
         footer={null}

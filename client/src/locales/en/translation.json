@@ -1,0 +1,40 @@
+{
+  "dashboard": {
+    "title": "Mongery Profitability Dashboard",
+    "viewTypes": {
+      "byOrder": "By Order",
+      "byProduct": "By Product"
+    }
+  },
+  "table": {
+    "customer": "Customer",
+    "orderNumber": "Order Number",
+    "orderDate": "Order Date",
+    "totalQuantity": "Total Quantity",
+    "revenue": "Revenue",
+    "cost": "Cost",
+    "profit": "Profit",
+    "netProfit": "Net Profit",
+    "productName": "Product Name",
+    "invoiceNumber": "Invoice Number",
+    "quantity": "Quantity",
+    "specifications": "Specifications",
+    "attributes": {
+      "package": "Package",
+      "winding": "Winding",
+      "innerDiameter": "Inner Diameter",
+      "outerDiameter": "Outer Diameter",
+      "wireDiameter": "Wire Diameter",
+      "znCoating": "Zn Coating",
+      "windingType": "Winding Type",
+      "diameterTolerances": "Diameter Tolerances",
+      "strength": "Strength (Min-Max)"
+    }
+  },
+  "search": {
+    "placeholder": "Search..."
+  },
+  "modal": {
+    "title": "Product Specifications"
+  }
+}

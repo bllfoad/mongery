@@ -3,11 +3,14 @@ import { Layout, Radio, Select, Space, Typography } from 'antd';
 import { profitabilityApi } from './store/api';
 import ProfitabilityTable from './components/ProfitabilityTable';
 import CashBalance from './components/CashBalance';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './components/LanguageSwitcher';
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
 
 const App: React.FC = () => {
+  const { t } = useTranslation();
   const [viewType, setViewType] = useState<'order' | 'product'>('order');
   const [currency, setCurrency] = useState<string>('USD');
 
@@ -19,11 +22,11 @@ const App: React.FC = () => {
     <Layout className="min-h-screen">
       <Header className="bg-white shadow-md">
         <div className="container mx-auto px-4 h-full flex items-center justify-between">
-          <Title level={3} className="m-0">Mongery Profitability Dashboard</Title>
+          <Title level={3} className="m-0">{t('dashboard.title')}</Title>
           <Space>
             <Radio.Group value={viewType} onChange={(e) => setViewType(e.target.value)}>
-              <Radio.Button value="order">By Order</Radio.Button>
-              <Radio.Button value="product">By Product</Radio.Button>
+              <Radio.Button value="order">{t('dashboard.viewTypes.byOrder')}</Radio.Button>
+              <Radio.Button value="product">{t('dashboard.viewTypes.byProduct')}</Radio.Button>
             </Radio.Group>
             <Select
               value={currency}
@@ -33,6 +36,7 @@ const App: React.FC = () => {
                 { value: 'TL', label: 'TL' },
               ]}
             />
+            <LanguageSwitcher />
           </Space>
         </div>
       </Header>

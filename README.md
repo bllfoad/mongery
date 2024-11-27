@@ -48,7 +48,6 @@ yarn start
 
 Uygulama tarayıcınızda http://localhost:3000 adresinde çalışacaktır.
 
-
 ## 🧪 Test
 
 Uygulama, kapsamlı test süitleri ile birlikte gelmektedir. Testleri çalıştırmak için:
@@ -66,7 +65,6 @@ cd server
 npm test
 ```
 
-
 ## 🛠 Teknik Detaylar
 
 - React + TypeScript frontend
@@ -76,3 +74,10 @@ npm test
 - tailwindcss
 - RESTful API
 
+## 🌍 Dil Desteği
+
+Uygulama şu anda iki dil desteği sunmaktadır:
+- 🇹🇷 Türkçe
+- 🇬🇧 İngilizce
+
+Dil değiştirmek için uygulama üst menüsündeki dil seçim kutusunu kullanabilirsiniz.

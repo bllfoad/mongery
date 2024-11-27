@@ -1,0 +1,40 @@
+{
+  "dashboard": {
+    "title": "Mongery Karlılık Paneli",
+    "viewTypes": {
+      "byOrder": "Siparişe Göre",
+      "byProduct": "Ürüne Göre"
+    }
+  },
+  "table": {
+    "customer": "Müşteri",
+    "orderNumber": "Sipariş Numarası",
+    "orderDate": "Sipariş Tarihi",
+    "totalQuantity": "Toplam Miktar",
+    "revenue": "Gelir",
+    "cost": "Maliyet",
+    "profit": "Kar",
+    "netProfit": "Net Kar",
+    "productName": "Ürün Adı",
+    "invoiceNumber": "Fatura Numarası",
+    "quantity": "Miktar",
+    "specifications": "Özellikler",
+    "attributes": {
+      "package": "Paket",
+      "winding": "Sarım",
+      "innerDiameter": "İç Çap",
+      "outerDiameter": "Dış Çap",
+      "wireDiameter": "Tel Çapı",
+      "znCoating": "Zn Kaplama",
+      "windingType": "Sarım Türü",
+      "diameterTolerances": "Çap Toleransları",
+      "strength": "Mukavemet (Min-Max)"
+    }
+  },
+  "search": {
+    "placeholder": "Ara..."
+  },
+  "modal": {
+    "title": "Ürün Özellikleri"
+  }
+}
